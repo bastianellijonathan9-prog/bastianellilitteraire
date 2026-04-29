@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poèmes — Jonathan Bastianelli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fond:#f5ede0; --fond-alt:#ede0ce;
+    --terra:#b5432a; --ocre:#c88b3a; --ocre-pale:#e8b96a;
+    --texte:#2b1f14; --texte-doux:#5a4535; --texte-pale:#9c8572;
+    --blanc:#fdf8f2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--fond);color:var(--texte);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.8;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.5;mix-blend-mode:multiply;}
+
+  nav{position:sticky;top:0;z-index:100;background:rgba(245,237,224,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,130,50,0.2);padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+  .nav-logo{font-family:'Playfair Display',serif;font-style:italic;color:var(--terra);text-decoration:none;font-size:1rem;letter-spacing:0.1em;}
+  .nav-retour{color:var(--texte-pale);text-decoration:none;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;border-bottom:1px solid transparent;transition:all 0.3s;}
+  .nav-retour:hover{color:var(--terra);border-bottom-color:var(--terra);}
+
+  header{padding:5rem 3rem 3rem;max-width:900px;margin:0 auto;border-bottom:1px solid rgba(200,139,58,0.2);}
+  .header-label{font-style:italic;color:var(--terra);font-size:0.85rem;letter-spacing:0.28em;text-transform:uppercase;margin-bottom:0.8rem;}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:var(--texte);line-height:1.1;margin-bottom:1rem;}
+  header p{color:var(--texte-pale);font-style:italic;font-size:1rem;}
+
+  #sommaire{max-width:900px;margin:0 auto;padding:3rem;}
+  .sommaire-titre{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--ocre);margin-bottom:1.5rem;letter-spacing:0.05em;}
+  .sommaire-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.2rem 2rem;}
+  .sommaire-grid li{list-style:none;}
+  .sommaire-grid a{color:var(--texte-doux);text-decoration:none;font-size:0.95rem;border-bottom:1px solid transparent;transition:all 0.25s;display:inline-block;padding:0.15rem 0;}
+  .sommaire-grid a:hover{color:var(--terra);border-bottom-color:var(--ocre-pale);}
+
+  .sep{display:flex;align-items:center;gap:1rem;max-width:900px;margin:1rem auto;padding:0 3rem;}
+  .sep-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--ocre),transparent);}
+  .sep-losange{width:6px;height:6px;background:var(--terra);transform:rotate(45deg);flex-shrink:0;}
+
+  .poemes-container{max-width:700px;margin:0 auto;padding:2rem 3rem 6rem;}
+  .poeme{padding:3.5rem 0;border-bottom:1px solid rgba(200,139,58,0.12);}
+  .poeme:last-child{border-bottom:none;}
+  .poeme-num{font-family:'Playfair Display',serif;font-style:italic;color:var(--ocre-pale);font-size:0.8rem;display:block;margin-bottom:0.8rem;}
+  .poeme-titre{font-family:'Playfair Display',serif;font-size:1.7rem;font-style:italic;color:var(--terra);margin-bottom:1.8rem;line-height:1.2;}
+  .poeme-corps{font-size:1.1rem;line-height:2;color:var(--texte-doux);font-style:italic;padding-left:1.5rem;border-left:2px solid rgba(200,139,58,0.25);}
+  .retour{display:inline-block;margin-top:1.5rem;color:var(--texte-pale);text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.3s;}
+  .retour:hover{color:var(--terra);}
+
+  @media(max-width:700px){
+    nav{padding:1rem 1.5rem;}
+    header,#sommaire{padding:3rem 1.5rem;}
+    .sommaire-grid{grid-template-columns:repeat(2,1fr);}
+    .poemes-container{padding:2rem 1.5rem 4rem;}
+  }
+  @media(max-width:480px){.sommaire-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Jonathan Bastianelli</a>
+  <a href="index.html#textes" class="nav-retour">← Retour au site</a>
+</nav>
+
+<header>
+  <p class="header-label">Recueil</p>
+  <h1>Poèmes</h1>
+  <p>60 textes — classés par ordre alphabétique</p>
+</header>
+
+<section id="sommaire">
+  <p class="sommaire-titre">Sommaire</p>
+  <ol class="sommaire-grid">
+    <li><a href="#accepte">Accepte</a></li>
+    <li><a href="#after-love">After love</a></li>
+    <li><a href="#ambassade-du-cur">Ambassade du cœur</a></li>
+    <li><a href="#art-du-sentiment">Art du sentiment</a></li>
+    <li><a href="#at-home">At home</a></li>
+    <li><a href="#back-on-purple">Back on Purple</a></li>
+    <li><a href="#bad-office">Bad Office</a></li>
+    <li><a href="#bal-des-rides">Bal des ridés</a></li>
+    <li><a href="#bonneval">Bonneval</a></li>
+    <li><a href="#carnet-de-doute">Carnet de doute</a></li>
+    <li><a href="#chavirement-present">Chavirement présent</a></li>
+    <li><a href="#corde-et-cordon">Corde et Cordon</a></li>
+    <li><a href="#crash">Crash</a></li>
+    <li><a href="#dites-vaincre">Dites vaincre</a></li>
+    <li><a href="#duende">Duende</a></li>
+    <li><a href="#earth">Earth</a></li>
+    <li><a href="#epopee-hip-hop">Epopée Hip Hop</a></li>
+    <li><a href="#et-les-cris-de-toi">Et les cris de toi</a></li>
+    <li><a href="#friends">Friends</a></li>
+    <li><a href="#full">Full</a></li>
+    <li><a href="#j-ai-du-sang-noir">J'ai du sang noir</a></li>
+    <li><a href="#jam-after-school">Jam After School</a></li>
+    <li><a href="#jungle-fever">Jungle Fever</a></li>
+    <li><a href="#l-arene-des-amants">L'arène des amants</a></li>
+    <li><a href="#la-nuit-du-cur">La nuit du cœur</a></li>
+    <li><a href="#la-revolte-de-beni-saf">La révolte de Beni Saf</a></li>
+    <li><a href="#la-table">La table</a></li>
+    <li><a href="#la-vague-de-l-ame">La vague de l'âme</a></li>
+    <li><a href="#le-mont-aigoual">Le mont Aigoual</a></li>
+    <li><a href="#le-pechou">Le Péchou</a></li>
+    <li><a href="#leon-b">Leon B</a></li>
+    <li><a href="#les-souvenirs-infideles">Les souvenirs infidèles</a></li>
+    <li><a href="#les-tourmentes">Les tourmentés</a></li>
+    <li><a href="#mecheria">Méchéria</a></li>
+    <li><a href="#mobile-attitude">Mobile attitude</a></li>
+    <li><a href="#noise-the-train">Noise the Train</a></li>
+    <li><a href="#peurs">Peurs</a></li>
+    <li><a href="#promenade">Promenade</a></li>
+    <li><a href="#regarde">Regarde</a></li>
+    <li><a href="#resonances">Résonances</a></li>
+    <li><a href="#reve-et-reverbere">Rêve et Réverbère</a></li>
+    <li><a href="#rouleau-compresseur">Rouleau compresseur</a></li>
+    <li><a href="#roumaine">Roumaine</a></li>
+    <li><a href="#roumaine-sur-la-route">Roumaine sur la route</a></li>
+    <li><a href="#saltimbanque">Saltimbanque</a></li>
+    <li><a href="#sans-attache">Sans attache</a></li>
+    <li><a href="#sans-eux">Sans eux</a></li>
+    <li><a href="#seul">Seul</a></li>
+    <li><a href="#seul-et-solide">Seul et solide</a></li>
+    <li><a href="#sourire-a-la-souffrance">Sourire à la souffrance</a></li>
+    <li><a href="#steps">Steps</a></li>
+    <li><a href="#tomber">Tomber</a></li>
+    <li><a href="#tourment">Tourment</a></li>
+    <li><a href="#trahison">Trahison</a></li>
+    <li><a href="#transmission">Transmission</a></li>
+    <li><a href="#tuile">Tuile</a></li>
+    <li><a href="#tumbao">Tumbao</a></li>
+    <li><a href="#tzingara">Tzingara</a></li>
+    <li><a href="#violence">Violence</a></li>
+    <li><a href="#who-is-johnny">Who is Johnny</a></li>
+  </ol>
+</section>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-losange"></div><div class="sep-line"></div></div>
+
+<div class="poemes-container">
+
+<article class="poeme" id="accepte">
+  <span class="poeme-num">— 01 —</span>
+  <h2 class="poeme-titre">Accepte</h2>
+  <div class="poeme-corps">Les blessures n'aiment pas l'usure.<br>
+Elles transparaissent.<br>
+J'ai le corps et le cœur ouverts.<br>
+Le sang coule mais le sang c'est la vie.<br>
+Les blessures sont ouvertes plus besoin de les refermer.<br>
+Maintenant la vie s'étonne de la folie.<br>
+Elle se joue de l'amour ou de la haine.<br>
+Je pars en vérité.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="after-love">
+  <span class="poeme-num">— 02 —</span>
+  <h2 class="poeme-titre">After love</h2>
+  <div class="poeme-corps">Je sors de la peine et de la pénombre.<br>
+J'ai vu la belle incertaine et triste.<br>
+Les fruits de la colère pourrissent.<br>
+J'entrevois le nouveau verger.<br>
+Ma tristesse et mes joies restent les miennes.<br>
+Je marcherai au-delà du verger dans un sentier ardent et propice<br>
+Seuls mes descendants me suivront.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="ambassade-du-cur">
+  <span class="poeme-num">— 03 —</span>
+  <h2 class="poeme-titre">Ambassade du cœur</h2>
+  <div class="poeme-corps">Les enfants ne sont pas silencieux.<br>
+Ils aiment le carnaval et les bals masqués.<br>
+Mais la vie n'est pas une farandole éternelle.<br>
+Elle aime les temps de ciel bleu.<br>
+Dans cette réalité les enfants passent vers l'âge adulte.<br>
+Ici tout n'est que calme, luxe et sérénité.<br>
+Mais nous irons au bal, nous irons danser.<br>
+Un slow lentement.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+
+
+<article class="poeme" id="art-du-sentiment">
+  <span class="poeme-num">— 05 —</span>
+  <h2 class="poeme-titre">Art du sentiment</h2>
+  <div class="poeme-corps">Cendras, je te ressens.<br>
+Dans la beauté de ton écriture il y a la vie et la sensation du vrai.<br>
+Dans la perception des gens, des cris et des sentiments tu dépeints ton génie.<br>
+Faire avec le temps de beau et du vrai.<br>
+Cendras, je t'envie, tes voyages, ta liberté est le prix a payer.<br>
+Vivre l'instant à pleine vapeur ou pleine torpeur.<br>
+Je n'ai pas besoin d'absinthe juste regarder.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="at-home">
+  <span class="poeme-num">— 06 —</span>
+  <h2 class="poeme-titre">At home</h2>
+  <div class="poeme-corps">La hutte retrouve ses brillances<br>
+L'éclair de la torpeur à fait son temps.<br>
+Les essais de la table ronde opèrent.<br>
+Je suis comme un veille arbre qui reprend ses bourgeons.<br>
+Bientôt le soleil et l'air m'offriront l'énergie vitale.<br>
+Je ne suis qu'un chemin de vie.<br>
+Elle s'inscrit à l'amour au calme et à la joie.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="back-on-purple">
+  <span class="poeme-num">— 07 —</span>
+  <h2 class="poeme-titre">Back on Purple</h2>
+  <div class="poeme-corps">Les fourmis sont de retour.<br>
+Elles oublient leur fatigue passée.<br>
+Leurs antennes sont calmes et souple.<br>
+Bientôt la fourmilière va les broyer.<br>
+Certains sont dociles et d'autres sont versatiles.<br>
+J'aime les fourmis rouges, elles creusent des galeries secrètes.<br>
+Dans ces recoins, les vibrations contraires peuvent s'exprimer.<br>
+Bientôt la galerie des fourmis rouges va s'agrandirent.<br>
+J'aimes les rugissements et les vibrations soudaines.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="bad-office">
+  <span class="poeme-num">— 08 —</span>
+  <h2 class="poeme-titre">Bad Office</h2>
+  <div class="poeme-corps">Les pierres dévalent.<br>
+Elles laissent des traces furtives.<br>
+Sans restanques je laisse les coups passer.<br>
+Mon esprit et mon courage taillent la pierre.<br>
+Le discernement et la claire voyance deviennent mes murs.<br>
+J'exulte les regards et le paroles sales.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="bal-des-rides">
+  <span class="poeme-num">— 09 —</span>
+  <h2 class="poeme-titre">Bal des ridés</h2>
+  <div class="poeme-corps">Le bal des anciens n'a plus de masque.<br>
+Les visages ont leur discours.<br>
+Les rides, les taches sont loin derrière les rires.<br>
+C'est la danse des sages.<br>
+Les cheveux blancs sont comme leur vie.<br>
+Ils sont dissous dans une blancheur de calme et de sagesse.<br>
+Dans cette crème de visage nue, plus de faux-semblant mais juste la vérité.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="bonneval">
+  <span class="poeme-num">— 10 —</span>
+  <h2 class="poeme-titre">Bonneval</h2>
+  <div class="poeme-corps">Les chemins et leurs sentiers ont leur beauté.<br>
+Leur simple perspective laisse toujours entrevoir la liberté.<br>
+Tout est possible sur les chemins.<br>
+La course, la marche et l'amour.<br>
+Avec mes membres je parcours avec joie les chemins sauvages.<br>
+Le bruissement des feuilles au-dessus des pierres ne me perturbe jamais.<br>
+C'est la contemplation des espaces.<br>
+Il y a toujours des chemins de vie ou des chemins croisés.<br>
+Mais tous les chemins ne mènent pas à Rome.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="carnet-de-doute">
+  <span class="poeme-num">— 11 —</span>
+  <h2 class="poeme-titre">Carnet de doute</h2>
+  <div class="poeme-corps">L'aventure du carnet.<br>
+Laisser défiler les paysages, les émotions.<br>
+Dans la continuité de mon corps et de mes yeux,<br>
+Mes mains laissent vivre le reflux des mots.<br>
+Les envies et les rêves ne sont pas des chimères,<br>
+Ils sont un idéal de vie.<br>
+L'homme se doit d'être libre contre l'oppresseur et les injustices.<br>
+A travers son histoire et celle des autres, son imaginaire est son pied à terre.<br>
+Il sublime la beauté, le plaisir et le sentiment d'appartenance.<br>
+Des mots simples, mais des mots, bordel !<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="chavirement-present">
+  <span class="poeme-num">— 12 —</span>
+  <h2 class="poeme-titre">Chavirement présent</h2>
+  <div class="poeme-corps">L'intériorité ou extérieur.<br>
+Je vis mon intérieur et retrouve les extérieurs<br>
+Dans mon antre, je suis seul.<br>
+Parfois les extrêmes et les dangers me perdent.<br>
+Mais il faut du temps pour la connaissance de soi.<br>
+Maintenant une nouvelle route s'ouvre faite de hasards et de rencontre.<br>
+Suis-je là pour retrouver ma vraie nature.<br>
+Le tunnel s'est ouvert plus le temps de reculer.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="corde-et-cordon">
+  <span class="poeme-num">— 13 —</span>
+  <h2 class="poeme-titre">Corde et Cordon</h2>
+  <div class="poeme-corps">Le petit Lion perd sa mère.<br>
+Épris de peur, il s'enfuit et rencontre une lionne.<br>
+Elle se confond avec sa reine mère.<br>
+Elle le protège comme dans une cage.<br>
+Ses instincts et sa force se dissipent.<br>
+A l'aurore de sa vie, sa lionne s'enfuit.<br>
+A cet instant, il comprend que sa mère ne reviendra pas.<br>
+Que personne ici-bas ne la remplacera.<br>
+Seul il trouvera sa force en lui.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="crash">
+  <span class="poeme-num">— 14 —</span>
+  <h2 class="poeme-titre">Crash</h2>
+  <div class="poeme-corps">Je suis las de cette plage remplit de chardons.<br>
+La plage des malheurs.<br>
+Au loin je ne vois que le phare des iles canines.<br>
+La vie est chienne et ses morsures traversent le temps.<br>
+La nuit va passer et je pourrai repartir vers Bizerte.<br>
+Là-bas les gens sont simples et ne s'enferment pas dans leur domaine.<br>
+J'arrive sur le port et je ressens la puissance du Soleil de Tunisie.<br>
+Les odeurs de la vie, du poisson et les taches de gasoil colorent les journées.<br>
+J'aime la vie quand elle est simple.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="dites-vaincre">
+  <span class="poeme-num">— 15 —</span>
+  <h2 class="poeme-titre">Dites vaincre</h2>
+  <div class="poeme-corps">Ils sont là mes bambins incertains.<br>
+La traversée des ombres entre les offenses est un jeu.<br>
+Nos sentiers se déblayent.<br>
+L'affront de la rupture s'estompe.<br>
+Je désire une lumière chaude.<br>
+L'amour et la présence doivent les illuminer.<br>
+Mes enfants sont présents.<br>
+Ils aiment l'énergie des possibles.<br>
+Je découvre avec eux l'aventure d'un père.<br>
+La joie se moque de la colère.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="duende">
+  <span class="poeme-num">— 16 —</span>
+  <h2 class="poeme-titre">Duende</h2>
+  <div class="poeme-corps">La guitare suinte.<br>
+Quand les mots transpercent.<br>
+Là où les oliviers chassent leur solitude.<br>
+Mon dos est droit et habité.<br>
+La Muse respire le soleil et la liberté.<br>
+Ma fêlure est un compas et mon corps est un témoin.<br>
+Je vois à l'horizon les chevaux sauvages.<br>
+Et dans la rosace de ma Condermanos la vie se confond avec le soleil et mes mains.<br>
+Leur galop est un rythme endiablé et toute la vallée est touchée par la Juerga.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="earth">
+  <span class="poeme-num">— 17 —</span>
+  <h2 class="poeme-titre">Earth</h2>
+  <div class="poeme-corps">Je suis un astre.<br>
+Certitude d'être seul.<br>
+Autour de moi, des étoiles et des astéroïdes millénaires se perdent sans raison.<br>
+Mais je ressens que la constellation est un tout.<br>
+Les êtres, les arbres, la vie.<br>
+Dans la contemplation de la beauté, je retrouve la joie.<br>
+Dans le contentement, je retrouve le calme.<br>
+Dans la spiritualité, je retrouve le cœur.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="epopee-hip-hop">
+  <span class="poeme-num">— 18 —</span>
+  <h2 class="poeme-titre">Epopée Hip Hop</h2>
+  <div class="poeme-corps">L'aventure n'est jamais finie.<br>
+Comme une rupture, une usure je reviens vers la luxure.<br>
+Tel un saltimbanque perdu, ma véritable nature revient.<br>
+Je sais ô combien l'instant, la vie sont éphémères.<br>
+L'urgence nous pétrit.<br>
+Charlie Parker, Jaco Pastorius sont passés par là.<br>
+Comme un jaillissement, je ne peux contenir cette fragilité.<br>
+La vie est fragile autant rester agile.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="et-les-cris-de-toi">
+  <span class="poeme-num">— 19 —</span>
+  <h2 class="poeme-titre">Et les cris de toi</h2>
+  <div class="poeme-corps">Je ne peux écrire sans style.<br>
+Je peux aussi écrémer les mots<br>
+Je ne peux écrire sans harmonies.<br>
+Je peux aussi sublimer la vie.<br>
+Je ne peux écrire sans rimes.<br>
+Je peux déconstruire le rythme.<br>
+Je ne peux que me contenter de mon flux<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="friends">
+  <span class="poeme-num">— 20 —</span>
+  <h2 class="poeme-titre">Friends</h2>
+  <div class="poeme-corps">Grand bouffon et au revoir tristesse.<br>
+Bonjour les clowns.<br>
+Revenir à la source.<br>
+Ma nature et mon esprit sont plus que mon physique.<br>
+Tu étais la belle mélancolique.<br>
+Je suis le beau bouffon.<br>
+Bouffon du roi ou bouffon de toi.<br>
+Je transcende la douleur dans le rire et dans le jeu.<br>
+Comme un esprit étriqué, tu as projeté sur moi une partie de toi-même.<br>
+Par ici les amis.<br>
+Je suis le romantique vidé de sa sémantique.<br>
+Le poids de la relation avec l'autre commence sa mue.<br>
+De deuils en deuils, je ne prends jamais le temps de vivre.<br>
+Comme Sylvain Tesson, je hais le béton et l'asphalte.<br>
+Pourquoi s'entêter du côté sombre de la vie.<br>
+La vie c'est l'horizon et les lumières<br>
+Alors partageons.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="full">
+  <span class="poeme-num">— 21 —</span>
+  <h2 class="poeme-titre">Full</h2>
+  <div class="poeme-corps">Le temps d'un chapitre ou d'une simple voyelle me suffit.<br>
+Après un délice d'une rosée affinée je rentre dans l'oubli.<br>
+Mon égo est une perdition.<br>
+Les paradis littéraires me donnent l'évasion.<br>
+Au travers d'une vision ou d'un essai.<br>
+Je me délaisse des caprices de l'esprit.<br>
+Comme dans une église, je m'adonne à une transcendance et laisses-en instance mes petites souffrances.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="j-ai-du-sang-noir">
+  <span class="poeme-num">— 22 —</span>
+  <h2 class="poeme-titre">J'ai du sang noir</h2>
+  <div class="poeme-corps">J'ai du sang noir, et alors.<br>
+Toutes les histoires se figent toujours noire sur blanc.<br>
+J'ai du sang qui coule toujours noir.<br>
+Même le blanc noirci sous la brûlure du soleil.<br>
+Nous avons du sang noir, et après.<br>
+Je sais que l'or noir ou l'or blanc se confondent.<br>
+J'aime mon sang noir et ses palettes de couleurs.<br>
+Elles s'harmonisent dans le gris et ouvrent les couleurs de la vie.<br>
+J'ai du sang noir qui coule et qui respire et rien ne l'arrête.<br>
+Bon sang.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="jam-after-school">
+  <span class="poeme-num">— 23 —</span>
+  <h2 class="poeme-titre">Jam After School</h2>
+  <div class="poeme-corps">Les saltimbanques se sont revues ;<br>
+À l'interstice de leur expression, l'héritage de Gustave F.<br>
+La création, l'imagination et la parole est au pouvoir.<br>
+Dans le prolongement de mes mains ma contrebasse obéit à mes oreilles.<br>
+Je rentre dans l'osmose collective et je retrouve la spontanéité de l'enfant.<br>
+Le cœur et nos sons sont notre feu de jeux.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="jungle-fever">
+  <span class="poeme-num">— 24 —</span>
+  <h2 class="poeme-titre">Jungle Fever</h2>
+  <div class="poeme-corps">Les fauves sont sortis de la forêt.<br>
+Le combat va commencer.<br>
+Les lions sont dans leurs territoires et leurs croyances.<br>
+Mais le léopard n'aime pas les habitudes et les intimidations.<br>
+Même si dans sa course, il peut chuter ou se tromper.<br>
+Les fauves ne lui font pas peur.<br>
+Sa force, son courage et sa détermination ne lui épargneront pas son combat.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="l-arene-des-amants">
+  <span class="poeme-num">— 25 —</span>
+  <h2 class="poeme-titre">L'arène des amants</h2>
+  <div class="poeme-corps">Dans l'arène des amants rien n'est plus fantastique.<br>
+Tous se délite.<br>
+Les paradis perdus ne sont que des chimères dans l'esprit étriqué.<br>
+La graine de la tristesse a fait son terreau et le soleil n'y peut rien.<br>
+Les amants sont devenus méchants et troublants.<br>
+Leurs mots sont déjà des balles à blanc.<br>
+Au sortir de l'arène les hommes aux blouses noires leur tendent la main.<br>
+Dans l'arène des amants rien n'est plus comme avant.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="la-nuit-du-cur">
+  <span class="poeme-num">— 26 —</span>
+  <h2 class="poeme-titre">La nuit du cœur</h2>
+  <div class="poeme-corps">Je ne peux me presser de finir l'œuvre exquise.<br>
+La profondeur de cette écriture dépasse mon petit esprit solitaire.<br>
+La paresse vaut mieux que la vitesse.<br>
+L'instant d'une phrase ou d'un paragraphe est comme une éternité.<br>
+Cette puissance poétique me pique.<br>
+Dans la nuit de douceur je me laisse tomber.<br>
+Tous ces moments ne sont que l'instants d'après pour lesquels je me sens présent.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="la-revolte-de-beni-saf">
+  <span class="poeme-num">— 27 —</span>
+  <h2 class="poeme-titre">La révolte de Beni Saf</h2>
+  <div class="poeme-corps">Les chevaux sont sortis dans les plaines du Hoggar.<br>
+Le domaine des caïds est perdu.<br>
+La révolte gronde, les chevaux sont en colère.<br>
+Les plaines s'emplissent des vibrations de la horde aux galops.<br>
+Les terres sont labourées par les sabots.<br>
+Perdus, la horde sauvage s'en va vers sa perte.<br>
+Les petites gens, les palefreniers sont les seuls volontaires pour retrouver les chevaux, jadis leurs maîtres.<br>
+Ils sont là, calmes sur les plages de Benisaf.<br>
+Un nouveau leader arrive et le combat ne fait que commencer.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="la-table">
+  <span class="poeme-num">— 28 —</span>
+  <h2 class="poeme-titre">La table</h2>
+  <div class="poeme-corps">Dans le jeu des histoires tout se transmet.<br>
+Dans ce lieu, sur cette table.<br>
+J'établis cette complicité et la continuité.<br>
+Les vies éphémères et leur singularité ont toujours leurs correspondances.<br>
+Un simple partage sur la table du grand-père et l'infime continuité s'opère.<br>
+L'arbre séculaire se régale de ce partage.<br>
+Les morts et les vivants restent en liens au travers de leur amour.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="la-vague-de-l-ame">
+  <span class="poeme-num">— 29 —</span>
+  <h2 class="poeme-titre">La vague de l'âme</h2>
+  <div class="poeme-corps">Ecrire c'est comme les vagues.<br>
+Les idées jaillissent et repartent.<br>
+Tout s'entremêle, les trésors, les déchets et parfois les bouées.<br>
+Mais à la fin, l'instant d'un moment on ne voit que la lueur de l'écume ;<br>
+La beauté fugace, les mots et les phrases chargés d'une émotion ou d'une vérité.<br>
+L'écriture est parfois agitée, tempétueuse ou d'un calme plat.<br>
+C'est toujours dans les profondeurs de l'océan des sentiments que l'on coule pour mieux renaître.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="le-mont-aigoual">
+  <span class="poeme-num">— 30 —</span>
+  <h2 class="poeme-titre">Le mont Aigoual</h2>
+  <div class="poeme-corps">Le soleil berce la cime du Mont Aigoual<br>
+Ici la fureur des hommes s'est dissipée.<br>
+Dans l'observatoire ma solitude et mon calme intérieurs sont ma croix.<br>
+Je ressens la profondeur de nos êtres et de nos vies.<br>
+Les horizons funestes s'estompent.<br>
+La lumière pleine et magnétique m'emplit.<br>
+Je suis l'être, je suis les autres, je suis vivant.<br>
+Dans cette plénitude je pars dans une marche intérieure, celle de la vie.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="le-pechou">
+  <span class="poeme-num">— 31 —</span>
+  <h2 class="poeme-titre">Le Péchou</h2>
+  <div class="poeme-corps">J'étais bien, j'étais là.<br>
+J'étais à Ventabren.<br>
+J'étais ou, j'étais au Pechou.<br>
+J'étais là, j'étais bien, j'étais parmi les miens.<br>
+J'étais ivre, j'avais mes livres et ma lyre.<br>
+J'étais famille, j'étais enfant, j'étais ami.<br>
+J'étais ici, au Péchou<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="leon-b">
+  <span class="poeme-num">— 32 —</span>
+  <h2 class="poeme-titre">Leon B</h2>
+  <div class="poeme-corps">Léon, toi le dandy, toi le visionnaire, toi le combattant.<br>
+De la classe, de la lutte et de la foi, tu fus le dépositaire.<br>
+Pourquoi tant de haine.<br>
+Mais ta force et ton intelligence ont vaincu.<br>
+Comme les roches volcaniques ton leg et ton passage restent inoubliables.<br>
+Léon, ton héritage est le nôtre, bleu comme l'azur qui annonce la terre de l'espoir.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+
+
+<article class="poeme" id="les-souvenirs-infideles">
+  <span class="poeme-num">— 34 —</span>
+  <h2 class="poeme-titre">Les souvenirs infidèles</h2>
+  <div class="poeme-corps">Dans ma tête il ne reste que des mirages de l'absence.<br>
+Dans mon corps tout est parti dehors et je n'aime que mon sort.<br>
+Dans mon entre je n'ai que l'épouvante violentée du rejet.<br>
+Dans ce noir, l'espoir renait.<br>
+L'amour se consume et se détruit.<br>
+Ce ne sont que des souvenirs infidèles.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="les-tourmentes">
+  <span class="poeme-num">— 35 —</span>
+  <h2 class="poeme-titre">Les tourmentés</h2>
+  <div class="poeme-corps">Les âmes perdues se rencontrent.<br>
+Dans un tourment de différence seul attirance coule de source.<br>
+Leur assaut s'engage dans des trajectoires aux gouts étranges.<br>
+Lui le caïd elle l'artiste.<br>
+Comme une danse macabre seul leur instant d'étreinte les protège contre le feu ardent inéluctable.<br>
+Le caïd et l'artiste, un destin incertain.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="mecheria">
+  <span class="poeme-num">— 37 —</span>
+  <h2 class="poeme-titre">Méchéria</h2>
+  <div class="poeme-corps">Le sage sort de son Riad.<br>
+Il est vêtu d'un turban et d'une chemise blanche.<br>
+Il reste statique à contempler la splendeur du passé.<br>
+Dans sa solitude, il s'éprend des lumières de la ville.<br>
+Il est bon de s'aventurer ailleurs dans les méandres de la médina.<br>
+Pour la première fois, il traverse les bains et se rapproche de la mosquée.<br>
+Tel un caméléon du désert, il passe les amas de sable pour découvrir d'autres couleurs et les senteurs de Méchéria.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="mobile-attitude">
+  <span class="poeme-num">— 38 —</span>
+  <h2 class="poeme-titre">Mobile attitude</h2>
+  <div class="poeme-corps">Les momies aux écrans noirs rodent.<br>
+Ils oublient la vie et les sentiments mélangés.<br>
+Le soi-même, le post et le réseau deviennent virtuels et froids.<br>
+Les momies dérivent dans les trains et les bureaux avec leurs outils de solitude.<br>
+Dans leur regard et leur parole il n'y a plus de style juste de l'uniformité.<br>
+Je n'aime plus votre mobile attitude.<br>
+Venez avec moi sur les terrasses et dans les salles de conférences.<br>
+Ici les rumeurs des relations humaines sont vivantes.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="noise-the-train">
+  <span class="poeme-num">— 39 —</span>
+  <h2 class="poeme-titre">Noise the Train</h2>
+  <div class="poeme-corps">Le train des rumeurs.<br>
+Je pars de Narbonne la romaine.<br>
+Sur les rails tous les cris sont présents.<br>
+Les Romains dans leur guerre sanglante.<br>
+Les Cathares dans les tranchées de l'inquisition.<br>
+Dans un voyage agité j'entends les bruits d'aujourd'hui.<br>
+L'impudeur des voyageurs connectés.<br>
+Je ne peux me recueillir avec ses voix qui dérangent.<br>
+Mes livres et mon stylo sont vains.<br>
+Je suis dans le train des rumeurs.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="peurs">
+  <span class="poeme-num">— 40 —</span>
+  <h2 class="poeme-titre">Peurs</h2>
+  <div class="poeme-corps">J'ai perdu le goût mais pas l'envie.<br>
+Aux diable les maladies et les pandémies.<br>
+Tant que mon cœur frissonne les projets résonnent.<br>
+Les envies se moquent des restrictions.<br>
+Elles supplantent les peurs et me galvanisent.<br>
+Je suis présent.<br>
+Les idées se déversent dans des pulsions créatrices.<br>
+Je m'obstine et cherche un bonheur insoumis.<br>
+Jouer, écrire et bouger.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="promenade">
+  <span class="poeme-num">— 41 —</span>
+  <h2 class="poeme-titre">Promenade</h2>
+  <div class="poeme-corps">Je suis seul sur les routes inconnues.<br>
+Chaque mouvement de mes jambes est une gloire à la vie.<br>
+Au loin je sais la réalité d'un village ou d'une vie.<br>
+Tous portent les mêmes stigmates.<br>
+La solitude des êtres.<br>
+L'absurdité d'avoir.<br>
+Dans ma quête d'absolu, mes routes m'accompagnent.<br>
+Au sommet de mon esprit, la respiration et l'oubli.<br>
+J'arrive parfois à mi-chemin.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="regarde">
+  <span class="poeme-num">— 42 —</span>
+  <h2 class="poeme-titre">Regarde</h2>
+  <div class="poeme-corps">Le bleu du ciel n'est pas trompeur.<br>
+Dans transparence, il est comme une étreinte céleste.<br>
+Regarde-le et oublie-toi.<br>
+Laisse monter le calme et l'oubli.<br>
+Relie-toi et tu oublieras ce petit nuage de solitude.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="resonances">
+  <span class="poeme-num">— 43 —</span>
+  <h2 class="poeme-titre">Résonances</h2>
+  <div class="poeme-corps">Les résonances intimes sont là.<br>
+Cendras, Marseille sont mes flots bleus.<br>
+Ce sentiment revient toujours en moi.<br>
+Une empreinte, un lieu, une histoire qui vient.<br>
+Mon corps et mes intonations trouvent toujours ses correspondances.<br>
+Ce sont mes résonances intimes.<br>
+Comme un marcheur, j'explore et je reste sensible à ces vibrations.<br>
+Ce ne sont que d'infimes vérités mais elles résonnent en moi.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="reve-et-reverbere">
+  <span class="poeme-num">— 44 —</span>
+  <h2 class="poeme-titre">Rêve et Réverbère</h2>
+  <div class="poeme-corps">Mon histoire est comme un réverbère dans la nuit.<br>
+Le socle et robuste et le charbon ardent.<br>
+Les minéraux laissent entrevoir le sel de ma vie.<br>
+Elles sont les lueurs de l'amour et de l'amitié qui rayonnent.<br>
+Même si parfois la suie noire du mauvais charbon apparaît.<br>
+Le charbonnier des possibles n'est jamais loin.<br>
+Et nuit après nuit, la lueur reste féconde.<br>
+Je ne suis qu'un avec mes minéraux essentiels.<br>
+Mes pensées éclairent ma vie.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="rouleau-compresseur">
+  <span class="poeme-num">— 45 —</span>
+  <h2 class="poeme-titre">Rouleau compresseur</h2>
+  <div class="poeme-corps">Les leaders s'acharnent.<br>
+Les bonnes gens se perdent.<br>
+Toujours cet idéal de vie et de liberté.<br>
+Soit j'écrase, soit je construis.<br>
+Les cercles de qualité ne font que des alités.<br>
+Quel infime substrat d'espoir peut nous rattacher.<br>
+La lumière transparait toujours derrière les échecs collectifs.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="roumaine">
+  <span class="poeme-num">— 46 —</span>
+  <h2 class="poeme-titre">Roumaine</h2>
+  <div class="poeme-corps">J'ai parcouru des vies avec elle.<br>
+Ses qualités sont multiples.<br>
+Ses formes sont doubles.<br>
+Parfois douces et parfois criardes.<br>
+Elle aime la douceur et l'énergie atomique.<br>
+En me tenant debout ou assis,<br>
+Je sais l'honorer.<br>
+Notre relation est unique.<br>
+Ma Roumaine, ma béquille, ma famille.<br>
+Ma grand-mère.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="roumaine-sur-la-route">
+  <span class="poeme-num">— 47 —</span>
+  <h2 class="poeme-titre">Roumaine sur la route</h2>
+  <div class="poeme-corps">La grand-mère a fait son retour.<br>
+Elle se frotte à mes mains.<br>
+Les vibrations sont évanescentes.<br>
+Elles volent et font corps avec moi.<br>
+Dans mes mains se concentre l'espoir.<br>
+Dans mon corps circule la vie.<br>
+Dans le bois les harmoniques circulent.<br>
+La grande est ancrée et sa pique me soutient.<br>
+La marche des basses sera mon tapis volant.<br>
+Je gratte, je groove, je swing.<br>
+Dans la profondeur des graves fréquences.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="saltimbanque">
+  <span class="poeme-num">— 48 —</span>
+  <h2 class="poeme-titre">Saltimbanque</h2>
+  <div class="poeme-corps">L'aventure n'est jamais finie.<br>
+Comme une rupture, une usure je reviens vers la luxure.<br>
+Tel un saltimbanque perdu, ma véritable nature revient..<br>
+Je sais ô combien l'instant et la vie sont éphémères.<br>
+L'urgence tout le monde passe par elle.<br>
+Charly PARKER, Jaco PASTORIUS et moi.<br>
+Comme jaillissement je ne peux contenir cette fragilité.<br>
+La vie est fragile autant rester agile.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="sans-attache">
+  <span class="poeme-num">— 49 —</span>
+  <h2 class="poeme-titre">Sans attache</h2>
+  <div class="poeme-corps">L'attachement reste un nuage de croyances.<br>
+L'empreinte de l'amour n'est pas indélébile.<br>
+Le reflet de l'être aimé sur l'eau de vie s'estompe.<br>
+Au-delà des reflets, l'évaporation des désirs et la liberté sont perpétuels.<br>
+Je suis un être aimé, aimant et vivant sans attachement.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="sans-eux">
+  <span class="poeme-num">— 50 —</span>
+  <h2 class="poeme-titre">Sans eux</h2>
+  <div class="poeme-corps">C'est Mozart qu'on assassine<br>
+J'aurai aimé vivre sans eux.<br>
+Ces idéaux absents.<br>
+Ma tête est lourde.<br>
+C'est l'auréole des damnés.<br>
+Je n'ai qu'un mantra.<br>
+Faire face et ne pas trahir.<br>
+La vie nous tue pour mieux renaitre.<br>
+Je ne fabrique pas des révolvers.<br>
+Je préfère les rêves bleus et chauds.<br>
+Les mots sont des notes qui dessinent les pas de la renaissance.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="seul">
+  <span class="poeme-num">— 51 —</span>
+  <h2 class="poeme-titre">Seul</h2>
+  <div class="poeme-corps">Ce soir je ne lis pas<br>
+Demain je pars,<br>
+Dans le doute et la crainte.<br>
+L'écrit sera comme un oubli.<br>
+Le stylo me piquera.<br>
+Et ses mots seront un antidote.<br>
+La phrase déversera des solutions.<br>
+Et même si mon corps flegmatique subit ce monde infâme et perdu.<br>
+J'apprivoiserai avec mes mots la peur et la souffrance.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="seul-et-solide">
+  <span class="poeme-num">— 52 —</span>
+  <h2 class="poeme-titre">Seul et solide</h2>
+  <div class="poeme-corps">Parfois le vent souffle mal.<br>
+Les barques perdues se laissent dériver.<br>
+Mais dans la tempête sourde et infernale, même le bras cassé rattrape le gouvernail.<br>
+Au-delà du cap du désespoir se dévoile un port d'attache.<br>
+Les pieds sur terre, je me sépare des cordes et des blessures.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="sourire-a-la-souffrance">
+  <span class="poeme-num">— 53 —</span>
+  <h2 class="poeme-titre">Sourire à la souffrance</h2>
+  <div class="poeme-corps">Souffrance je vous aimes.<br>
+Le noir peut avoir des fragrances de l'espoir.<br>
+Le fétus n'est plus têtu.<br>
+Il se lasse du téton protecteur.<br>
+Souffrance je vous quitte.<br>
+Pas de quittance mais une appartenance commune.<br>
+Le noir laisse place à la brillance de la musique, de l'écriture et des amis.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="steps">
+  <span class="poeme-num">— 54 —</span>
+  <h2 class="poeme-titre">Steps</h2>
+  <div class="poeme-corps">Dans les souvenirs indécis, je cherche mon histoire.<br>
+Des grandes plages s'ouvrent à moi.<br>
+Comment se raconter et se rencontrer.<br>
+L'héritage des maîtres est précieux,<br>
+Ils s'apparentent à un rayon de lumière qui éclaire les nouveau-nés.<br>
+Vivre est un parcours étrange, fait de bruits et de fureurs et surtout d'espérance.<br>
+Comme les marcheurs du monde entier, je suis un pèlerin, un alpiniste ou berger.<br>
+Je n'aspire qu'à la contemplation du monde.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="tomber">
+  <span class="poeme-num">— 55 —</span>
+  <h2 class="poeme-titre">Tomber</h2>
+  <div class="poeme-corps">Au bord de l'abîme, les prémices de ma vérité ne font plus qu'une.<br>
+Je suis l'âme seul, l'être esseulé.<br>
+La haine de l'être aimé n'est pas la seule vérité.<br>
+Je rentre seul dans la forêt des loups.<br>
+Je n'ai plus que mes jambes et ma force vitale pour vivre.<br>
+Je suis l'être esseulé aux combats toujours salvateurs.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="tourment">
+  <span class="poeme-num">— 56 —</span>
+  <h2 class="poeme-titre">Tourment</h2>
+  <div class="poeme-corps">Le sol se dérobe sous moi ;<br>
+Et le sable laisse transparaître un sursaut d'espoir.<br>
+Moi et ma constellation restons attachés aux branches de l'olivier.<br>
+Je ne sais quel courant va nous emporter.<br>
+Je reste alerte et debout.<br>
+Contre la tempête j'égraine toujours un espoir.<br>
+Un horizon ou mon histoire pourra s'aventurer.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="trahison">
+  <span class="poeme-num">— 57 —</span>
+  <h2 class="poeme-titre">Trahison</h2>
+  <div class="poeme-corps">Le stand est triste.<br>
+Le maître décline.<br>
+Son masque se fissure.<br>
+Sa bassesse et ses mesquineries tombent.<br>
+Je suis un chasseur sauvage pétrit de candeur.<br>
+Ce compagnonnage est las et dénué de sens.<br>
+Je m'inflige de brandir mon arc.<br>
+Les flèches me rendront ma dignité.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="transmission">
+  <span class="poeme-num">— 58 —</span>
+  <h2 class="poeme-titre">Transmission</h2>
+  <div class="poeme-corps">Le lion et son alter égo s'aiment.<br>
+Comme des bêtes de vie, ils partent à la conquête des plaines.<br>
+Rien ne les arrête.<br>
+Ils savent la dureté de la vie.<br>
+Lui l'a vécu, l'autre la ressentit.<br>
+Son esprit est vif et clairvoyant.<br>
+Il ne lui manque que l'expérience.<br>
+Le sage, le père doit lui apprendre l'énergie, la vitesse et l'instinct de domination.<br>
+Tout s'écrit dans l'aventure de Jonathan et Milan.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="tuile">
+  <span class="poeme-num">— 59 —</span>
+  <h2 class="poeme-titre">Tuile</h2>
+  <div class="poeme-corps">Les toits sont comme les anciens.<br>
+Ils portent sur eux les marques de la vie.<br>
+Les tempêtes, les orages et la chaleur sont des stigmates éternels.<br>
+Parfois une tuile tombe.<br>
+C'est le démembrement propre aux fragilités du temps.<br>
+Tous les toits ont leur histoire et leur couleur.<br>
+Quand vient l'avènement du lichen et du gel, la charpente n'y peut rien.<br>
+Les toits perdent alors leur jeunesse<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="tumbao">
+  <span class="poeme-num">— 60 —</span>
+  <h2 class="poeme-titre">Tumbao</h2>
+  <div class="poeme-corps">Au bal des danseurs les esprits se mélangent.<br>
+Certains sont chauds et d'autres sont raides sur eux-mêmes.<br>
+Des étoiles passent, leur corps et leurs sourires s'accordent.<br>
+C'est l'expression de la grâce et du plaisir.<br>
+Mon corps écoute, mime et se délecte.<br>
+Je suis à Cuba, les voitures des fifties vrombissent.<br>
+Ce soir avec ma contrebasse l'orchestre m'attend.<br>
+Plus d'enclave, plus de métrique.<br>
+Juste le son afro Cubain pour détourner le sort.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="tzingara">
+  <span class="poeme-num">— 61 —</span>
+  <h2 class="poeme-titre">Tzingara</h2>
+  <div class="poeme-corps">J'ai rêvé d'une balade avec elle.<br>
+Comme des enfants libres et plein de rêves.<br>
+Quelle soit à vélo, à pied ou à la nage.<br>
+Comme des amants inconscients, le jeu des distances et des déclarations souriantes s'opère.<br>
+J'ai rêvé de liberté et de légèreté sur les routes du Queyras.<br>
+Même dans une marche sans étreinte nos mains restent fidèles.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="violence">
+  <span class="poeme-num">— 62 —</span>
+  <h2 class="poeme-titre">Violence</h2>
+  <div class="poeme-corps">J'ai rencontré la bête féroce.<br>
+L'instant d'un mépris, l'animal oublie les bienfaits de la parole.<br>
+Dans l'urgence de cette gare j'ai atteint son être fragile.<br>
+J'ai rencontré la bête, elle était fade, bête et stérile.<br>
+Sa main dans mon corps n'est pas passé.<br>
+La bête attend, elle est à l'affût dans une gare, dans un bureau.<br>
+Mais ne jamais céder et attendre la fuite lâche et le retrait de la bête.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+<article class="poeme" id="who-is-johnny">
+  <span class="poeme-num">— 63 —</span>
+  <h2 class="poeme-titre">Who is Johnny</h2>
+  <div class="poeme-corps">Dans la torpeur de la nuit.<br>
+J'oublie les sanglots éternels<br>
+Je me tourne vers la richesse de l'âme comme un soubresaut de vie et d'espoir.<br>
+Même les êtres chères se disloquent.<br>
+Y a-t-il une réponse ?<br>
+Je m'abstiens face aux croyances<br>
+Je reste un rêveur solitaire.<br>
+Je suis un amant trépidant.<br>
+Je suis le fils volé.<br>
+Je suis l'ami infidèle.<br>
+Je suis Johnny.<br>
+</div>
+  <a href="#sommaire" class="retour">↑ Sommaire</a>
+</article>
+
+</div>
+
+</body>
+</html>

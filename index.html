@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Bastianelli — Poète & Conteur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Marseille : ocre chaud, silex blanc, bleu calanque */
+    /* Alger     : blanc cassé, azur pâle, faïence bleue  */
+    /* Florence  : terra cotta, or toscan, pierre pietra serena */
+
+    --fond:        #f5ede0;       /* parchemin méditerranéen */
+    --fond-alt:    #ede0ce;       /* légèrement plus foncé, sections alternées */
+    --fond-sombre: #2b1f14;       /* encre chaude — footer, nav pleine page */
+
+    --terra:       #b5432a;       /* terra cotta florentine */
+    --terra-pale:  #d4785c;       /* saumon Alger */
+    --ocre:        #c88b3a;       /* ocre Marseille */
+    --ocre-pale:   #e8b96a;       /* or provençal clair */
+    --azur:        #3a6e8a;       /* bleu calanque */
+    --azur-pale:   #b8d4e0;       /* ciel d'Alger */
+    --pierre:      #8c7b68;       /* pietra serena */
+
+    --texte:       #2b1f14;       /* brun encre */
+    --texte-doux:  #5a4535;       /* brun moyen */
+    --texte-pale:  #9c8572;       /* brun clair */
+    --blanc:       #fdf8f2;       /* blanc Alger légèrement crème */
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--fond);
+    color: var(--texte);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ─── TEXTURE PAPIER ─── */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:1000; opacity:0.5; mix-blend-mode:multiply;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:1.4rem 4rem;
+    background: rgba(245,237,224,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,130,50,0.2);
+  }
+
+  .nav-logo {
+    font-family:'Playfair Display', serif;
+    font-size:1rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--terra); text-decoration:none;
+  }
+
+  .nav-links { display:flex; gap:2.5rem; list-style:none; }
+  .nav-links a {
+    color:var(--texte-doux); text-decoration:none;
+    font-family:'EB Garamond', serif; font-size:0.9rem;
+    letter-spacing:0.1em; text-transform:uppercase; transition:color 0.3s;
+  }
+  .nav-links a:hover { color:var(--terra); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height:100vh;
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:flex-start;
+    padding:8rem 5rem 5rem 9rem;
+    position:relative; overflow:hidden;
+  }
+
+  .hero-bg {
+    position:absolute; inset:0;
+    background:
+      /* soleil couchant Marseille en haut à droite */
+      radial-gradient(ellipse 55% 70% at 90% 10%, rgba(200,139,58,0.22) 0%, transparent 65%),
+      /* azur calanque en bas gauche */
+      radial-gradient(ellipse 50% 60% at 5% 90%, rgba(58,110,138,0.12) 0%, transparent 60%),
+      /* terra cotta Florence centre */
+      radial-gradient(ellipse 40% 50% at 60% 55%, rgba(181,67,42,0.07) 0%, transparent 55%),
+      /* fond papier chaud */
+      linear-gradient(160deg, #f7efe2 0%, #f0e4ce 40%, #eadcca 100%);
+  }
+
+  /* motif carrelage arabe subtil */
+  .hero-motif {
+    position:absolute; right:0; top:0; bottom:0; width:42%;
+    opacity:0.06;
+    background-image:
+      repeating-linear-gradient(45deg,  var(--terra) 0, var(--terra) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--ocre)  0, var(--ocre)  1px, transparent 0, transparent 50%);
+    background-size:24px 24px;
+  }
+
+  /* filet vertical doré */
+  .hero-filet {
+    position:absolute; right:42%; top:10%; bottom:10%;
+    width:1px;
+    background:linear-gradient(to bottom, transparent, var(--ocre), transparent);
+    opacity:0.5;
+  }
+
+  .hero-content { position:relative; z-index:2; max-width:680px; }
+
+  .hero-tag {
+    font-family:'EB Garamond', serif; font-style:italic;
+    color:var(--terra); font-size:0.95rem; letter-spacing:0.25em;
+    text-transform:uppercase; margin-bottom:2.5rem;
+    opacity:0; animation: fadeUp 1s ease 0.2s forwards;
+  }
+
+  .hero-citation {
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:clamp(1rem, 1.5vw, 1.3rem);
+    line-height:1.5; color:var(--texte);
+    margin-bottom:3rem; padding-left:2rem;
+    border-left:2px solid var(--terra);
+    opacity:0; animation: fadeUp 1s ease 0.4s forwards;
+  }
+
+  .hero-nom {
+    font-family:'Playfair Display', serif; font-weight:900;
+    font-size:clamp(3rem, 7vw, 5.5rem);
+    line-height:1; letter-spacing:-0.02em;
+    color:var(--texte); margin-bottom:1rem;
+    opacity:0; animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  .hero-nom span { color:var(--terra); display:block; }
+
+  .hero-poeme-titre {
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic; font-weight:300;
+    color:var(--terra); font-size:0.95rem;
+    letter-spacing:0.18em; margin-top:-2rem;
+    margin-bottom:2.8rem;
+    opacity:0; animation: fadeUp 1s ease 0.55s forwards;
+  }
+
+  .hero-baseline {
+    font-family:'Cormorant Garamond', serif; font-weight:300;
+    font-style:italic; font-size:1.3rem;
+    color:var(--texte-pale); letter-spacing:0.06em; margin-bottom:3rem;
+    opacity:0; animation: fadeUp 1s ease 0.8s forwards;
+  }
+
+  .hero-cta {
+    display:inline-block; padding:0.9rem 2.5rem;
+    background:var(--terra); color:var(--blanc);
+    text-decoration:none; font-family:'EB Garamond', serif;
+    font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase;
+    transition:all 0.35s;
+    opacity:0; animation: fadeUp 1s ease 1s forwards;
+  }
+
+  .hero-cta:hover { background:var(--texte); }
+
+  /* ─── SÉPARATEUR ─── */
+  .sep {
+    display:flex; align-items:center; gap:1.2rem;
+    padding:0 5rem; max-width:1200px; margin:0 auto;
+  }
+  .sep-line { flex:1; height:1px; background:linear-gradient(to right, transparent, var(--ocre), transparent); }
+  .sep-losange { width:7px; height:7px; background:var(--terra); transform:rotate(45deg); flex-shrink:0; }
+
+  /* ─── SECTIONS ─── */
+  section { padding:7rem 5rem; max-width:1200px; margin:0 auto; }
+
+  .section-label {
+    font-family:'EB Garamond', serif; font-style:italic;
+    color:var(--terra); font-size:0.85rem; letter-spacing:0.28em;
+    text-transform:uppercase; margin-bottom:0.8rem;
+  }
+
+  .section-titre {
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.9rem, 3.5vw, 2.8rem); line-height:1.2;
+    color:var(--texte); margin-bottom:3rem;
+  }
+
+  /* ─── À PROPOS ─── */
+  #apropos {
+    display:grid; grid-template-columns:1fr 1.7fr;
+    gap:6rem; align-items:center;
+  }
+
+
+
+  /* arc arabe décoratif */
+  .portrait-cadre svg {
+    position:absolute; bottom:0; left:0; right:0;
+    opacity:0.12;
+  }
+
+  .portrait-wrapper {
+    position: relative;
+  }
+
+  .portrait-cadre {
+    width: 100%;
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--ocre);
+    box-shadow: 6px 6px 0 rgba(181,67,42,0.15);
+  }
+
+  .portrait-cadre img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: sepia(15%) contrast(1.05);
+    transition: filter 0.5s;
+  }
+
+  .portrait-cadre:hover img {
+    filter: sepia(0%) contrast(1);
+  }
+
+  .portrait-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(43,31,20,0.3) 100%);
+    pointer-events: none;
+  }
+
+  .portrait-cadre::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(200,139,58,0.3);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .portrait-legende-box {
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--terra);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portrait-initiales {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--blanc);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .portrait-legende {
+    margin-top:1rem; font-size:0.85rem;
+    color:var(--texte-pale); font-style:italic;
+    text-align:center; letter-spacing:0.12em;
+  }
+
+  .apropos-texte p {
+    color:var(--texte-doux); margin-bottom:1.5rem;
+    font-size:1.1rem; line-height:1.85;
+  }
+
+  .apropos-texte p:first-of-type::first-letter {
+    font-family:'Playfair Display', serif; font-size:3.5rem;
+    float:left; line-height:0.8; margin:0.1em 0.15em 0 0;
+    color:var(--terra);
+  }
+
+  .tags { margin-top:2rem; display:flex; gap:0.7rem; flex-wrap:wrap; }
+  .tag {
+    padding:0.3rem 1rem;
+    border:1px solid var(--ocre);
+    color:var(--ocre); font-size:0.78rem;
+    letter-spacing:0.15em; text-transform:uppercase;
+    font-family:'EB Garamond', serif;
+    background:rgba(200,139,58,0.06);
+  }
+
+  /* ─── TEXTES ─── */
+  #textes { padding-top:0; }
+
+  .textes-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(140,123,104,0.15);
+  }
+
+  .texte-card {
+    background:var(--fond);
+    padding:3rem 2.5rem;
+    border-top:3px solid transparent;
+    transition:border-color 0.4s, background 0.3s;
+    position:relative; overflow:hidden;
+  }
+
+  .texte-card:hover {
+    border-top-color:var(--terra);
+    background:var(--blanc);
+  }
+
+  .texte-numero {
+    font-family:'Playfair Display', serif; font-style:italic;
+    color:var(--ocre-pale); font-size:0.85rem; margin-bottom:1.5rem;
+  }
+
+  .texte-forme {
+    font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase;
+    color:var(--terra); font-family:'EB Garamond', serif; margin-bottom:0.8rem;
+  }
+
+  .texte-titre {
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:1.5rem; color:var(--texte); margin-bottom:1.5rem; line-height:1.3;
+  }
+
+  .texte-incipit {
+    font-size:1rem; line-height:1.8; color:var(--texte-pale); font-style:italic;
+    margin-bottom:2rem; border-left:2px solid var(--ocre);
+    padding-left:1.2rem;
+  }
+
+  .texte-lire {
+    color:var(--terra); text-decoration:none; font-size:0.8rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:0.5rem;
+    transition:gap 0.3s;
+  }
+  .texte-lire:hover { gap:1rem; }
+  .texte-lire::after { content:'→'; }
+
+  /* ─── PROJETS ─── */
+  #projets {
+    background:var(--fond-alt); max-width:100%; padding:7rem 0;
+  }
+
+  #projets .inner {
+    max-width:1200px; margin:0 auto; padding:0 5rem;
+  }
+
+  .projets-aparaitre {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--texte-pale);
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--ocre);
+  }
+
+  .projets-grid {
+    display:grid; grid-template-columns:repeat(2,1fr);
+    gap:3rem; margin-top:3rem;
+  }
+
+  .projet-card {
+    display:flex; flex-direction:column;
+    gap:1.5rem; align-items:stretch; padding:0;
+    background:var(--blanc);
+    border:1px solid rgba(200,139,58,0.2);
+    transition:border-color 0.4s, box-shadow 0.4s;
+    overflow:hidden;
+  }
+
+  .projet-card:hover {
+    border-color:var(--terra);
+    box-shadow:4px 4px 0 var(--terra);
+  }
+
+  .projet-couverture {
+    aspect-ratio:16/9;
+    background:linear-gradient(160deg, #d4785c, #b5432a);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:1rem; text-align:center; position:relative; overflow:hidden;
+  }
+
+  .projet-couverture.v2 {
+    background:linear-gradient(160deg, #3a6e8a, #2a4f65);
+  }
+
+  .projet-couverture::before {
+    content:''; position:absolute; inset:5px;
+    border:1px solid rgba(255,255,255,0.2);
+  }
+
+  .couv-titre {
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:1.4rem; color:#fdf8f2; line-height:1.2; position:relative; z-index:1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  .couv-auteur {
+    font-size:0.8rem; color:rgba(253,248,242,0.8);
+    letter-spacing:0.15em; margin-top:0.8rem; position:relative; z-index:1;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .projet-card-body {
+    padding: 1.8rem 2rem 2rem;
+  }
+
+  .projet-info-genre {
+    font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--terra); margin-bottom:0.7rem;
+  }
+
+  .projet-info-titre {
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:1.4rem; color:var(--texte); margin-bottom:1rem; line-height:1.3;
+  }
+
+  .projet-info-desc {
+    font-size:0.95rem; color:var(--texte-pale); line-height:1.75; margin-bottom:1.5rem;
+  }
+
+  .projet-lien {
+    color:var(--terra); text-decoration:none; font-size:0.8rem;
+    letter-spacing:0.15em; text-transform:uppercase;
+    border-bottom:1px solid var(--ocre); padding-bottom:0.2rem;
+    transition:border-color 0.3s;
+  }
+  .projet-lien:hover { border-color:var(--terra); }
+
+  /* ─── LECTURES ─── */
+  .lectures-intro {
+    font-size:1.1rem; color:var(--texte-pale); max-width:600px;
+    margin-bottom:3rem; font-style:italic;
+  }
+
+  .evenement {
+    display:grid; grid-template-columns:80px 1fr auto;
+    align-items:center; gap:2.5rem;
+    padding:1.8rem 0; border-bottom:1px solid rgba(140,123,104,0.25);
+    transition:padding-left 0.3s, background 0.3s;
+  }
+
+  .evenement:hover {
+    padding-left:0.8rem; background:rgba(200,139,58,0.04);
+  }
+
+  .evt-date { text-align:center; }
+
+  .evt-jour {
+    font-family:'Playfair Display', serif; font-size:2rem;
+    color:var(--terra); line-height:1;
+  }
+
+  .evt-mois {
+    font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--ocre);
+  }
+
+  .evt-titre {
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:1.15rem; color:var(--texte); margin-bottom:0.3rem;
+  }
+
+  .evt-lieu { font-size:0.9rem; color:var(--texte-pale); }
+
+  .evt-cta {
+    padding:0.55rem 1.3rem;
+    border:1px solid var(--terra); color:var(--terra);
+    text-decoration:none; font-size:0.78rem;
+    letter-spacing:0.15em; text-transform:uppercase;
+    transition:all 0.3s; white-space:nowrap;
+  }
+  .evt-cta:hover { background:var(--terra); color:var(--blanc); }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background:var(--fond-sombre); max-width:100%;
+    padding:7rem 4rem; text-align:center; position:relative; overflow:hidden;
+  }
+
+  /* motif zellige en fond */
+  #contact::before {
+    content:''; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(45deg,  rgba(200,139,58,0.04) 0, rgba(200,139,58,0.04) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, rgba(200,139,58,0.04) 0, rgba(200,139,58,0.04) 1px, transparent 0, transparent 50%);
+    background-size:30px 30px;
+    pointer-events:none;
+  }
+
+  /* grande initiale fantôme */
+  #contact::after {
+    content:'JB';
+    position:absolute; font-family:'Playfair Display', serif; font-style:italic;
+    font-size:22rem; color:rgba(200,139,58,0.04);
+    top:50%; left:50%; transform:translate(-50%,-50%);
+    pointer-events:none; white-space:nowrap;
+  }
+
+  .contact-inner { position:relative; z-index:2; max-width:580px; margin:0 auto; }
+
+  .contact-inner .section-label { color:var(--ocre-pale); }
+  .contact-inner .section-titre { color:var(--blanc); margin-bottom:1.5rem; }
+
+  .contact-texte {
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:1.35rem; color:rgba(253,248,242,0.65);
+    margin-bottom:2.5rem; line-height:1.65;
+  }
+
+  .contact-email {
+    display:inline-block; font-family:'Playfair Display', serif;
+    font-size:1.1rem; color:var(--ocre-pale);
+    text-decoration:none; border-bottom:1px solid rgba(200,139,58,0.4);
+    padding-bottom:0.3rem; margin-bottom:3rem; transition:border-color 0.3s;
+  }
+  .contact-email:hover { border-color:var(--ocre-pale); }
+
+  .contact-social { display:flex; justify-content:center; gap:2rem; }
+  .contact-social a {
+    color:rgba(253,248,242,0.35); text-decoration:none;
+    font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase;
+    transition:color 0.3s;
+  }
+  .contact-social a:hover { color:var(--ocre-pale); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:var(--fond-sombre); padding:1.5rem 4rem;
+    text-align:center; border-top:1px solid rgba(200,139,58,0.15);
+  }
+  footer p { font-size:0.8rem; color:rgba(253,248,242,0.2); letter-spacing:0.1em; }
+  footer span { color:var(--terra); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:900px) {
+    nav { padding:1.2rem 1.5rem; }
+    .nav-links { display:none; }
+    #hero { padding:6rem 1.5rem 4rem; }
+    .hero-motif, .hero-filet { display:none; }
+    #apropos { grid-template-columns:1fr; gap:3rem; padding:4rem 1.5rem; }
+    .portrait-cadre { aspect-ratio:1/1; max-width:220px; margin:0 auto; }
+    .textes-grid { grid-template-columns:1fr; }
+    .projets-aparaitre {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--texte-pale);
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--ocre);
+  }
+
+  .projets-grid { grid-template-columns:1fr; }
+    section { padding:4rem 1.5rem; }
+    #projets .inner { padding:0 1.5rem; }
+    .evenement { grid-template-columns:60px 1fr; grid-template-rows:auto auto; }
+    .evt-cta { grid-column:2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Jonathan Bastianelli</a>
+  <ul class="nav-links">
+    <li><a href="#apropos">Portrait</a></li>
+    <li><a href="#textes">Textes</a></li>
+    <li><a href="#projets">Œuvres</a></li>
+    <li><a href="#lectures">Lectures</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-motif"></div>
+  <div class="hero-filet"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Florence &nbsp;·&nbsp; Marseille &nbsp;·&nbsp; Alger</p>
+    <blockquote class="hero-citation">
+      Ecrire c'est comme les vagues.<br>
+      Les idées jaillissent et repartent.<br>
+      Tout s'entremêle, les trésors, les déchets et parfois les bouées.<br>
+      Mais à la fin, l'instant d'un moment on ne voit que la lueur de l'écume ;<br>
+      La beauté fugace, les mots et les phrases chargés d'une émotion ou d'une vérité.<br>
+      L'écriture est parfois agitée, tempétueuse ou d'un calme plat.<br>
+      Mais c'est toujours dans les profondeurs de l'océan des sentiments que l'on coule pour mieux renaître.
+    </blockquote>
+    <p class="hero-poeme-titre">— <em>La vague de l'âme</em></p>
+    <h1 class="hero-nom">
+      Jonathan<br>
+      <span>Bastianelli</span>
+    </h1>
+    <p class="hero-baseline">Poésie &nbsp;·&nbsp; Contes &nbsp;·&nbsp; Musique</p>
+    <a href="poemes.html" class="hero-cta">Lire les textes</a>
+  </div>
+</div>
+
+<!-- SEP -->
+<div class="sep" style="padding:3rem 5rem 0"><div class="sep-line"></div><div class="sep-losange"></div><div class="sep-line"></div></div>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div>
+    <div class="portrait-wrapper">
+      <div class="portrait-cadre">
+        <img src="portrait.jpg" alt="Jonathan Bastianelli">
+        <div class="portrait-overlay"></div>
+      </div>
+      <div class="portrait-legende-box">
+        <span class="portrait-initiales">J·B</span>
+      </div>
+    </div>
+    <p class="portrait-legende">Florence · Marseille · Alger</p>
+  </div>
+  <div class="apropos-texte">
+    <p class="section-label">Portrait</p>
+    <h2 class="section-titre">Une voix entre deux rives</h2>
+    <p>
+      Jonathan Bastianelli écrit sans retenue, loin des injonctions et décomplexé des traces de l'école formatée. Pour lui, la vie est une source d'inspiration sans limite. Cela donne aux mots leur sel et leur lumière oblique. Poésie, prose et musique — il pratique la littérature comme on joue de la contrebasse : avec le corps et le cœur, et la certitude que le silence est aussi une forme de langage.
+    </p>
+    <p>
+      Formé aux conservatoires d'Aix-en-Provence et d'Avignon, il porte dans son écriture les résonances du flamenco, de l'Arabo-andalou et du jazz méditerranéen.
+    </p>
+    <div class="tags">
+      <span class="tag">Poésie</span>
+      <span class="tag">Prose</span>
+      <span class="tag">Lectures à voix haute</span>
+      <span class="tag">Méditerranée</span>
+      <span class="tag">Jazz</span>
+    </div>
+  </div>
+</section>
+
+<!-- SEP -->
+<div class="sep"><div class="sep-line"></div><div class="sep-losange"></div><div class="sep-line"></div></div>
+
+<!-- TEXTES -->
+<section id="textes">
+  <p class="section-label">Extraits</p>
+  <h2 class="section-titre">Quelques pages</h2>
+  <div class="textes-grid">
+
+    <article class="texte-card">
+      <p class="texte-numero">— I —</p>
+      <p class="texte-forme">Poème</p>
+      <h3 class="texte-titre">Duende</h3>
+      <p class="texte-incipit">
+        La guitare suinte.<br>
+        Quand les mots transpercent.<br>
+        Là où les oliviers chassent leur solitude.<br>
+        Mon dos est droit et habité.<br>
+        La Muse respire le soleil et la liberté.<br>
+        Ma fêlure est un compas et mon corps est un témoin.<br>
+        Je vois à l'horizon les chevaux sauvages.
+      </p>
+      <a href="poemes.html#duende" class="texte-lire">Lire</a>
+    </article>
+
+    <article class="texte-card">
+      <p class="texte-numero">— II —</p>
+      <p class="texte-forme">Poème</p>
+      <h3 class="texte-titre">J'ai du sang noir</h3>
+      <p class="texte-incipit">
+        J'ai du sang noir, et alors.<br>
+        Toutes les histoires se figent toujours noire sur blanc.<br>
+        J'ai du sang qui coule toujours noir.<br>
+        Même le blanc noirci sous la brûlure du soleil.<br>
+        Nous avons du sang noir, et après.
+      </p>
+      <a href="poemes.html#j-ai-du-sang-noir" class="texte-lire">Lire</a>
+    </article>
+
+    <article class="texte-card">
+      <p class="texte-numero">— III —</p>
+      <p class="texte-forme">Poème</p>
+      <h3 class="texte-titre">Les souvenirs infidèles</h3>
+      <p class="texte-incipit">
+        Dans ma tête il ne reste que des mirages de l'absence.<br>
+        Dans mon corps tout est parti dehors et je n'aime que mon sort.<br>
+        Dans mon entre je n'ai que l'épouvante violentée du rejet.<br>
+        Dans ce noir, l'espoir renait.
+      </p>
+      <a href="poemes.html#les-souvenirs-infideles" class="texte-lire">Lire</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- PROJETS -->
+<div id="projets">
+  <div class="inner">
+    <p class="section-label">Œuvres</p>
+    <h2 class="section-titre">Livres</h2>
+    <p class="projets-aparaitre"><em>À paraître</em></p>
+    <div class="projets-grid">
+
+      <div class="projet-card">
+        <div class="projet-couverture">
+          <p class="couv-titre">Ciao<br>Maria</p>
+          <p class="couv-auteur">J. Bastianelli</p>
+        </div>
+        <div class="projet-card-body">
+          <p class="projet-info-genre">Roman</p>
+          <h3 class="projet-info-titre">Ciao Maria</h3>
+          <p class="projet-info-desc">
+            Matisse regarde cette société post-68 avec le regard d'un enfant innocent. Maria, sa mère d'un nouveau genre, l'embarque dans une aventure inconnue où tout est en mouvement. Voici les prémices des familles recomposées, sans normes ni repères. Mais bientôt cette transgression va montrer ses contradictions et ses dangers. Matisse peut compter sur l'énorme solidarité de son entourage pour affronter ce monde naissant.
+          </p>
+          <a href="#" class="projet-lien">En savoir plus</a>
+        </div>
+      </div>
+
+      <div class="projet-card">
+        <div class="projet-couverture v2">
+          <p class="couv-titre">TER et<br>la chimère</p>
+          <p class="couv-auteur">J. Bastianelli</p>
+        </div>
+        <div class="projet-card-body">
+          <p class="projet-info-genre">Nouvelles</p>
+          <h3 class="projet-info-titre">TER et la chimère</h3>
+          <p class="projet-info-desc">
+            Huit nouvelles qui naissent dans le bruit des rails. Des voyageurs, des rencontres, des destinations imaginaires et pourtant.
+          </p>
+          <a href="#" class="projet-lien">En savoir plus</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SEP -->
+<div class="sep" style="padding:4rem 5rem 0"><div class="sep-line"></div><div class="sep-losange"></div><div class="sep-line"></div></div>
+
+<!-- LECTURES -->
+<section id="lectures">
+  <p class="section-label">Agenda</p>
+  <h2 class="section-titre">Lectures à voix haute</h2>
+  <p class="lectures-intro">
+    La voix comme prolongement de la page. Des lectures à voix haute, seul ou accompagné, où la littérature reprend souffle.
+  </p>
+
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--texte-pale);font-size:1.05rem;">Aucune lecture programmée pour le moment. Revenez bientôt.</p>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Contact</p>
+    <h2 class="section-titre">Écrire à Jonathan</h2>
+    <p class="contact-texte">
+      Pour des invitations à des lectures, des projets de collaboration,<br>
+      ou simplement pour partager un mot sur les textes.
+    </p>
+    <a href="mailto:jonathanbastianelli9@gmail.com" class="contact-email">
+      jonathanbastianelli9@gmail.com
+    </a>
+    <div class="contact-social">
+      <a href="#">Instagram</a>
+      <a href="#">Babelio</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Jonathan Bastianelli &nbsp;<span>·</span>&nbsp; Tous droits réservés &nbsp;<span>·</span>&nbsp; Florence · Marseille · Alger</p>
+</footer>
+
+</body>
+</html>
